@@ -503,5 +503,22 @@ export const thunkToArray = thunk => {
 
 // -------------------------------------------------------------------
 
+// Creates a new function which throws an error.
+//
+// ```js
+// promise.catch(throwFn('an error has occured'))
+//
+// function foo (param = throwFn('param is required')) {}
+// ```
+export const throwFn = error => () => {
+  throw (
+    isString(error)
+      ? new Error(error)
+      : error
+  )
+}
+
+// -------------------------------------------------------------------
+
 // Wrap a value in a function.
 export const wrap = value => () => value
