@@ -943,7 +943,7 @@ exports.export = export_;
 
 #---------------------------------------------------------------------
 
-handleVmImport = $coroutine (req, res, { data, srId, type, xapi }) ->
+handleVmImport = $coroutine (req, res, { data, srId, type }) ->
   # Timeout seems to be broken in Node 4.
   # See https://github.com/nodejs/node/issues/3319
   req.setTimeout(43200000) # 12 hours
