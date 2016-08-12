@@ -1478,7 +1478,7 @@ export default class Xapi extends XapiBase {
           stream.resume()
           return
         }
-.
+
         const vhdStream = await vmdkToVhd(stream)
         await this._importVdiContent(vdi, vhdStream)
 
