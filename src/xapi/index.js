@@ -9,6 +9,7 @@ import sortBy from 'lodash/sortBy'
 import tarStream from 'tar-stream'
 import unzip from 'julien-f-unzip'
 import { defer } from 'promise-toolbox'
+import vmdkToVhd from 'xo-vmdk-to-vhd'
 import {
   wrapError as wrapXapiError,
   Xapi as XapiBase
@@ -1477,10 +1478,9 @@ export default class Xapi extends XapiBase {
           stream.resume()
           return
         }
-
-        // TODO: Import vhdToVmdk.
-        // const vhdStream = vhdToVmdk(stream)
-        // await this._importVdiContent(vdi, vhdStream)
+.
+        const vhdStream = await vmdkToVhd(stream)
+        await this._importVdiContent(vdi, vhdStream)
 
         // See: https://github.com/mafintosh/tar-stream#extracting
         // No import parallelization.
